@@ -13,7 +13,7 @@ export default function Hero() {
                 With our advanced tagging and search features, you can quickly find the snippet you need, right when you need it. Spend less time searching for code and more time writing it.
             </p>
 
-            <Button size="lg">Lets{"'"}s get Started</Button>
+            <Button size="lg">Lets&apos;s get Started</Button>
 
 
         </div>
