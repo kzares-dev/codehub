@@ -2,11 +2,11 @@ import { LanguageType, quickLinks, QuickLinkType, languages } from "@/lib/consta
 import { FaCode } from "react-icons/fa"
 
 export default function Sidebar() {
-    return <nav className="flex flex-col gap-4 h-screen pt-7 border-r max-w-[300px] p-5">
+    return <div className="flex flex-col gap-4 h-screen pt-7 border-r max-w-[300px] p-5 bg-secondary-background">
         <RenderLogo />
         <RenderQuickLinks />
         <RenderLanguages />
-    </nav>
+    </div>
 }
 
 const RenderLogo = () => {
