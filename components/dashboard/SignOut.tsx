@@ -26,12 +26,9 @@ const SignOut = () => {
         <AlertDialog>
 
             <AlertDialogTrigger>
-                <div className="flex items-center gap-2 my-5 px-5 py-3 bg-gray-100 border rounded-md border w-fit">
-
+                <div className="flex items-center gap-2 my-5 pl-l pr-5 py-3 bg-gray-100 border rounded-md border w-fit">
                     <FaSignOutAlt color="black" size={25} />
                     <div className="text-slate-600">Sign Out</div>
-
-
                 </div>
             </AlertDialogTrigger>
 

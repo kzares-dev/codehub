@@ -4,7 +4,7 @@ import SignOut from "./SignOut"
 
 
 export default function Sidebar() {
-    return <div className="flex flex-col gap-4 h-screen pt-7 border-r max-w-[300px] p-5 bg-secondary-background">
+    return <div className="flex flex-col gap-4 h-screen pt-7 border-r w-full max-w-[300px] p-5 bg-seco-background">
         <RenderLogo />
         <RenderQuickLinks />
         <RenderLanguages />
