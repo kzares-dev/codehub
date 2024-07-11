@@ -7,7 +7,7 @@ import { IoLogoJavascript } from "react-icons/io5";
 
 export default function SingleNote() {
     return (
-        <div className="max-sm:w-full w-[420px] rounded-md bg-white border py-4">
+        <div className="w-full max-w-[420px] rounded-md bg-white border py-4">
             <NoteHeader />
             <NoteDate />
             <NoteTags />
@@ -68,7 +68,7 @@ const codeString = `
 `
 
 const CodeBlock = ({ language }: CodeBlockProps) => {
-    return <div className="rounded-md overflow-hidden text-sm">
+    return <div className="rounded-md overflow-hidden text-sm border mx-2">
         <SyntaxHighlighter language={language} style={docco}>
             {codeString}
         </SyntaxHighlighter>
