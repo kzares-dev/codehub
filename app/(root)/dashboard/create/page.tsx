@@ -1,20 +1,26 @@
 "use client"
-import { useState } from "react";   
+import { useState } from "react";
 import NoteEditor from "@/components/dashboard/Notes/NoteEditor";
 import SingleNote from "@/components/dashboard/Notes/SingleNote";
 import { VscOpenPreview } from "react-icons/vsc";
-import { NoteType } from "@/lib/types";
+
+const codePlaceholder = `
+    import React from "react";
+
+    export default funcion () {
+        return (
+            <div>
+            
+            </div>
+        )
+    }
+`
 
 export default function CreateNote() {
-    const [title, setTitle] = useState();
-    const [description, setDescription] = useState();
-    const [tags, setTags] = useState();
-    const [code, setCode] = useState()
-
-
-
-
-
+    const [title, setTitle] = useState("Your Note title");
+    const [description, setDescription] = useState("Short description about your code");
+    const [tags, setTags] = useState(["no tag"]);
+    const [code, setCode] = useState(codePlaceholder)
 
     return <div className="flex flex-row w-full gap-2">
 
@@ -23,8 +29,25 @@ export default function CreateNote() {
                 <VscOpenPreview />
                 Preview
             </h1>
-            <SingleNote width="full" />
+            <SingleNote
+                noteContent={{
+                    title,
+                    description,
+                    tags,
+                    code,
+                    createdAt: new Date(),
+                }}
+                width="full" />
         </div>
-        <NoteEditor />
+        <NoteEditor
+            title={title}
+            description={description}
+            tags={tags}
+            code={code}
+            setTitle={setTitle}
+            setDescription={setDescription}
+            setTags={setTags}
+            setCode={setCode}
+        />
     </div>
 }

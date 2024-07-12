@@ -14,7 +14,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import { useClerk } from '@clerk/nextjs';
 
 
-const SignOut = () => {
+const SignOut = ({ hideBar }: { hideBar : boolean}) => {
 
     const { signOut } = useClerk();
 
@@ -25,10 +25,10 @@ const SignOut = () => {
     return (
         <AlertDialog>
 
-            <AlertDialogTrigger>
-                <div className="flex items-center gap-2 my-5 pl-l pr-5 py-3 bg-gray-100 border rounded-md border w-fit">
+            <AlertDialogTrigger className="w-full flex items-center justify-center">
+                <div className="flex items-center justify-center  gap-2 my-5 py-3  rounded-md w-fit ">
                     <FaSignOutAlt color="black" size={25} />
-                    <div className="text-slate-600">Sign Out</div>
+                   {!hideBar &&  <div className="text-slate-600">Sign Out</div>}
                 </div>
             </AlertDialogTrigger>
 
