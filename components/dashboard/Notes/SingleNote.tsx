@@ -5,9 +5,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter';
 import { CiTrash } from "react-icons/ci";
 import { IoLogoJavascript } from "react-icons/io5";
 
-export default function SingleNote() {
+export default function SingleNote({ width="420px" } : { width?: string}) {
     return (
-        <div className="w-full max-w-[420px] rounded-md bg-white border py-4">
+        <div className={`w-full max-w-[${width}] rounded-md bg-white border py-4`}>
             <NoteHeader />
             <NoteDate />
             <NoteTags />

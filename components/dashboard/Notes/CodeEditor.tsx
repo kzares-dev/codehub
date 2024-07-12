@@ -16,13 +16,14 @@ function onLoad(editor) {
 export default function CodeEditor() {
 
     return <div className="flex gap-2 text-[12px] text-slate-600 mt-8 relative">
-        <div className="absolute top-5 right-5">
-            <MdOutlineContentCopy size={25} />
+        <div className="absolute z-2 top-5 right-5">
+            <MdOutlineContentCopy color="black" size={20} />
         </div>
 
-        <MdOutlineCode size={25} color="black" />
+        <MdOutlineCode  size={25} color="black" />
 
         <AceEditor
+            width="100%"
             placeholder="Placeholder Text"
             mode="javascript"
             theme="tomorrow"

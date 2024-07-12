@@ -5,10 +5,32 @@ import { CiEdit } from "react-icons/ci";
 import { GiPapers } from "react-icons/gi";
 import { IoDocument } from "react-icons/io5";
 import CodeEditor from "./CodeEditor";
+import { NoteType } from "@/lib/types";
 
-function ContentNote() {  
+interface NoteEditorType {
+  title: string,
+  description: string,
+  tags: string,
+  code: string,
+  setTitle: () => void,
+  setDescription: () => void,
+  setTags: () => void,
+  setCode: () => void,
+}
+
+function NoteEditor({
+  title,
+  description,
+  tags,
+  code,
+  setTitle,
+  setDescription,
+  setTags,
+  setCode,
+}: NoteEditorType) {
+
   return (
-    <div className="gap-5 flex flex-col w-1/2 bg-white p-5  border rounded-l-lg h-auto mt-4">
+    <div className="gap-5 flex flex-col w-full bg-white p-5  border rounded-l-lg h-auto">
       <ContentNoteHeader />
       <NoteTags />
       <Description />
@@ -68,4 +90,4 @@ function Description() {
 }
 
 
-export default ContentNote
+export default NoteEditor

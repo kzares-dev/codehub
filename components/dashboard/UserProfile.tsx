@@ -22,13 +22,20 @@ export default function UserProfile() {
 
     }, [user])
 
-    const loading = (
-        <div className="w-9 h-9 rounded-full mb-[5px] bg-slate-200 animate-pulse" />
+    const Loading = () => (
+       <div className="flex flex-row gap-2">
+         <div className="w-9 h-9 rounded-full mb-[5px] bg-slate-200 animate-pulse" />
+
+         <div className="flex flex-col gap-1">
+            <div className="w-[150px] bg-slate-200 animate-pulse h-3 roudned-md" />
+            <div className="w-[100px] bg-slate-200 animate-pulse h-3 rounded-md" />
+         </div>
+       </div>
     )
     return (
         <div className="flex gap-3 items-center">
             {!user ?
-                loading :
+                <Loading /> :
                 <img src={imageUrl} alt="" className="w-9 h-9 rounded-full mb-[5px]" />
             }
 

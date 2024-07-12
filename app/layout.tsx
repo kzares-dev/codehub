@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import NextTopLoader from 'nextjs-toploader';
+import { AppWrapper } from "@/lib/context";
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -24,9 +25,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={poppins.className}>
-        <NextTopLoader color="#973131" />
+          <NextTopLoader color="#973131" />
+          <AppWrapper>
           {children}
-          </body>
+          </AppWrapper>
+        </body>
       </html>
     </ClerkProvider>
   );
