@@ -1,28 +1,31 @@
 "use client"
 
 import { MdOutlineCode } from "react-icons/md";
-import { MdOutlineContentCopy } from "react-icons/md";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-tomorrow";
 import "ace-builds/src-noconflict/ext-language_tools";
 
-const sampleContent = `
-function onLoad(editor) {
-    console.log("i've loaded");
-}
-`
-export default function CodeEditor() {
+export default function CodeEditor({
+    code,
+    setCode
+}: {
+    code: string,
+    setCode: (code: string) => void,
+}) {
 
-    return <div className="flex gap-2 text-[12px] text-slate-600 mt-8 relative">
-        <div className="absolute z-2 top-5 right-5">
-            <MdOutlineContentCopy color="black" size={20} />
+    return <div className=" text-slate-600 mt-2  w-full min-h-[400px] relative">
+
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-50 animate-pulse rounded-md">
+            <h1 className="flex flex-col items-center justify-center gap-2 text-slate-600 text-lg font-semibold">
+                <MdOutlineCode size={30} color="#973131" />
+                Code Editor Loading
+            </h1>
         </div>
 
-        <MdOutlineCode  size={25} color="black" />
-
         <AceEditor
+            onChange={(value) => setCode(value)}
             width="100%"
             placeholder="Placeholder Text"
             mode="javascript"
@@ -33,7 +36,7 @@ export default function CodeEditor() {
             showPrintMargin={true}
             showGutter={true}
             highlightActiveLine={true}
-            value={sampleContent}
+            value={code}
             setOptions={{
                 enableBasicAutocompletion: false,
                 enableLiveAutocompletion: false,

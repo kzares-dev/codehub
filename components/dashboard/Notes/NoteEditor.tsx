@@ -5,7 +5,7 @@ import { CiEdit } from "react-icons/ci";
 import { GiPapers } from "react-icons/gi";
 import { IoDocument } from "react-icons/io5";
 import CodeEditor from "./CodeEditor";
-import { SelectTag } from "./SelectTag";
+import SelectTags from "./SelectTags";
 
 interface NoteEditorType {
   title: string,
@@ -60,7 +60,7 @@ function NoteEditor({
                 {tag}
               </div>
             ))}
-            <SelectTag tags={allTags} />
+            <SelectTags tags={allTags} />
           </div>
 
         </div>
@@ -76,11 +76,11 @@ function NoteEditor({
           rows={3}
           id=""
           placeholder="Enter a description..."
-          className="bg-gray-50 w-full p-4 border outline-none focus:outline-none transition-all rounded-md text-sm text-slate-500" />
+          className="bg-white w-full p-4 border outline-none focus:outline-none transition-all rounded-md text-sm text-slate-500" />
       </div>
 
 
-      <CodeEditor />
+      <CodeEditor code={code} setCode={setCode} />
     </div>
   )
 }

@@ -14,8 +14,7 @@ export default function Sidebar() {
     const [hideBar, setHideBar] = useState(true);
 
     useEffect(() => {
-        if (windowWidth <= 900) setHideBar(true)
-        else setHideBar(false)
+        if (windowWidth <= 900) setHideBar(true);
     }, [windowWidth])
 
     return <div className={`flex flex-col gap-4 h-screen pt-7 border-r max-w-[300px] p-5 bg-white relative ${!hideBar && "w-full"}`}>
@@ -51,7 +50,7 @@ const RenderQuickLinks = ({ hideBar }: { hideBar: boolean }) => {
 
             {!hideBar && <div className="font-semibold text-lg text-slate-500 border-b pb-3">Quick Links</div>}
 
-            <div className={`flex flex-col  gap-4 pt-4 ${hideBar && "items-center text-2xl gap-7"}`} >
+            <div className={`flex flex-col  gap-7 pt-4 ${hideBar && "items-center text-2xl"}`} >
                 
                 {quickLinks.map(({ name, Icon }: QuickLinkType) => (
                     <ul key={name} className="flex flex-col gap-2 text-slate-400 cursor-pointer">
