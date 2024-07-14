@@ -16,7 +16,12 @@ const codePlaceholder = `
         )
     }
 `
-
+/*
+    !This component is marked as "use client" for one main reason,
+    To see the content preview
+    the ideal is make it server component and use form actions
+    but is not posible in this use case
+*/
 export default function CreateNote() {
     const [title, setTitle] = useState("Your Note title");
     const [description, setDescription] = useState("Short description about your code");

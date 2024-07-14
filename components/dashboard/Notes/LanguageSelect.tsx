@@ -33,7 +33,7 @@ export default function LanguageSelect({
 
         <PopoverContent className="flex flex-col py-4">
             {languages.map(({ name, Icon }: LanguageType) => (
-                <PopoverClose>
+                <PopoverClose key={name}>
                     <ul onClick={() => setLanguage({ name, Icon })} key={name} className="flex flex-col gap-2 text-slate-400 cursor-pointer hover:bg-gray-50 p-2 rounded-md">
                         <li className="flex items-center gap-1 text-md text-slate-600">
                             <Icon />

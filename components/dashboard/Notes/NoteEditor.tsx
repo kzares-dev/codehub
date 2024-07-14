@@ -5,6 +5,10 @@ import { IoDocument } from "react-icons/io5";
 import CodeEditor from "./CodeEditor";
 import LanguageSelect from "./LanguageSelect";
 import { LanguageType } from "@/lib/constants";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { createNote } from "@/lib/actions/note.action";
+import { useUser } from "@clerk/nextjs";
 
 interface NoteEditorType {
   title: string,
@@ -28,8 +32,51 @@ function NoteEditor({
   setLanguage
 }: NoteEditorType) {
 
+  const { user } = useUser()
+
+  const submitForm = () => {
+
+    // user is not loaded will trigger a new call to the function
+    console.log(user?.id)
+    if(!user?.id) {
+      submitForm();
+      return
+    }
+    
+
+    const note = {
+      title,
+      description,
+      code,
+      language: language.name,
+      createdAt: new Date(),
+      userId: user?.id,
+    }
+    createNote(note)
+      .then((response) => {
+        console.log(response)
+        alert("note create")
+      })
+      .catch((response) => {
+        console.log(response)
+        alert("note create")
+      })
+  }
+
   return (
     <div className="gap-5 flex flex-col w-full bg-white p-5  border rounded-l-lg h-auto">
+
+      {/*-- Create Buttons --*/}
+
+      <div className="flex w-full justify-between items-center">
+        <Button size="lg" variant="outline" asChild>
+          <Link href="/dashboard">
+            Cancel
+          </Link>
+        </Button>
+        <Button onClick={submitForm} size="lg"> Create </Button>
+      </div>
+
       {/*-- Content Header --*/}
       <div className="flex justify-between gap-8">
 
@@ -42,12 +89,9 @@ function NoteEditor({
             className="font-bold text-xl outline-none resize-none h-auto overflow-hidden w-full"
           />
         </div>
-
-        <IoClose color="#aaa" size={25} />
-
       </div >
 
-      
+
 
       {/*-- Description--*/}
       <div className="flex flex-row gap-2 w-full " >
