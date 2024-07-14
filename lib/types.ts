@@ -8,4 +8,5 @@ export type NoteType = {
     title: string,
     description: string,
     code: string,
+    language: string,
 }

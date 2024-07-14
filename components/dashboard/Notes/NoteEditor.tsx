@@ -1,18 +1,20 @@
 "use client";
 import { MdOutlineTextFields } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
-import { CiEdit } from "react-icons/ci";
-import { GiPapers } from "react-icons/gi";
 import { IoDocument } from "react-icons/io5";
 import CodeEditor from "./CodeEditor";
+import LanguageSelect from "./LanguageSelect";
+import { LanguageType } from "@/lib/constants";
 
 interface NoteEditorType {
   title: string,
   description: string,
   code: string,
+  language: LanguageType
   setTitle: (title: string) => void,
   setDescription: (description: string) => void,
   setCode: (code: string) => void,
+  setLanguage: (item: LanguageType) => void
 }
 
 function NoteEditor({
@@ -22,6 +24,8 @@ function NoteEditor({
   setTitle,
   setDescription,
   setCode,
+  language,
+  setLanguage
 }: NoteEditorType) {
 
   return (
@@ -57,8 +61,8 @@ function NoteEditor({
           className="bg-white w-full p-4 border outline-none focus:outline-none transition-all rounded-md text-sm text-slate-500" />
       </div>
 
-
-      <CodeEditor code={code} setCode={setCode} />
+      <LanguageSelect language={language} setLanguage={setLanguage} />
+      <CodeEditor language={language} code={code} setCode={setCode} />
     </div>
   )
 }

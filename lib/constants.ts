@@ -5,6 +5,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { IoLogoJavascript } from "react-icons/io5";
 import { FaPython } from "react-icons/fa";
 import { BiLogoCPlusPlus } from "react-icons/bi";
+import { FaJava } from "react-icons/fa";
 
 export type QuickLinkType = {
     name: string,
@@ -36,11 +37,12 @@ export const languages = [
         Icon: IoLogoJavascript,
     },
     {
+        name: "Java",
+        Icon: FaJava,
+    },
+    {
         name: "Python",
         Icon: FaPython,
     },
-    {
-        name: "Cpp",
-        Icon: BiLogoCPlusPlus 
-    },
+    
 ]

@@ -3,6 +3,7 @@ import { useState } from "react";
 import NoteEditor from "@/components/dashboard/Notes/NoteEditor";
 import SingleNote from "@/components/dashboard/Notes/SingleNote";
 import { VscOpenPreview } from "react-icons/vsc";
+import { languages } from "@/lib/constants";
 
 const codePlaceholder = `
     import React from "react";
@@ -19,7 +20,8 @@ const codePlaceholder = `
 export default function CreateNote() {
     const [title, setTitle] = useState("Your Note title");
     const [description, setDescription] = useState("Short description about your code");
-    const [code, setCode] = useState(codePlaceholder)
+    const [code, setCode] = useState(codePlaceholder);
+    const [language, setLanguage] = useState(languages[0]);
 
     return <div className="flex flex-row w-full gap-2">
 
@@ -34,10 +36,14 @@ export default function CreateNote() {
                     description,
                     code,
                     createdAt: new Date(),
+                    language: language.name,
                 }}
                 width="full" />
         </div>
+        
         <NoteEditor
+            language={language}
+            setLanguage={setLanguage}
             title={title}
             description={description}
             code={code}
