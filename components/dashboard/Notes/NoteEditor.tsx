@@ -29,21 +29,6 @@ function NoteEditor({
   setCode,
 }: NoteEditorType) {
 
-  const allTags = [
-    {
-      name: "javascript",
-      selected: false,
-    },
-    {
-      name: "java",
-      selected: false,
-    },
-    {
-      name: "python",
-      selected: false,
-    },
-  ]
-
   return (
     <div className="gap-5 flex flex-col w-full bg-white p-5  border rounded-l-lg h-auto">
       {/*-- Content Header --*/}
@@ -68,12 +53,14 @@ function NoteEditor({
         <GiPapers size={20} className="text-slate-800" />
         <div className="flex justify-between w-full">
           <div className="flex gap-2 items-center flex-wrap">
-            {/*tags.map((tag, idx) => (
-              <div key={tag + idx} className="bg-slate-100 text-slate-400 p-1 px-2 rounded-md">
-                {tag}
-              </div>
-            )) */}
-            <SelectTags setTags={setTags} tags={allTags} />
+            {tags.map((tag, idx) => {
+              if (tag.selected) return (
+                <div key={tag.name + idx} className="bg-slate-100 text-slate-400 p-1 px-2 rounded-md">
+                  {tag.name}
+                </div>
+              )
+            })}
+            <SelectTags />
           </div>
 
         </div>

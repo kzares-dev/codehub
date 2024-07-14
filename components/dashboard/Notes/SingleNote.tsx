@@ -23,8 +23,8 @@ export default function SingleNote({ width, noteContent }: { width?: string, not
             </div>
             {/*-- Note Tags --*/}
             <div className="flex flex-wrap gap-1 text-slate-500 text-sm px-4 pt-4">
-                {noteContent.tags.map((tag) => <div key={tag} className="bg-white border text-primary rounded-md px-2">
-                    {tag}
+                {noteContent.tags.map((tag) => <div key={tag.name} className="bg-white border text-primary rounded-md px-2">
+                    {tag.name}
                 </div>)}
             </div>
             {/*-- Note Description --*/}

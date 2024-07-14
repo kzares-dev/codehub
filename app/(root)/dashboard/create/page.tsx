@@ -19,7 +19,20 @@ const codePlaceholder = `
 export default function CreateNote() {
     const [title, setTitle] = useState("Your Note title");
     const [description, setDescription] = useState("Short description about your code");
-    const [tags, setTags] = useState(["no tag"]);
+    const [tags, setTags] = useState([
+        {
+            name: "javascript",
+            selected: true,
+        },
+        {
+            name: "java",
+            selected: false,
+        },
+        {
+            name: "python",
+            selected: false,
+        },
+    ]);
     const [code, setCode] = useState(codePlaceholder)
 
     return <div className="flex flex-row w-full gap-2">
