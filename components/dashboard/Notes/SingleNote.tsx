@@ -21,12 +21,7 @@ export default function SingleNote({ width, noteContent }: { width?: string, not
             <div className="flex gap-1 px-4 py-1 font-light text-slate-500 text-sm">
                 <span> {noteContent.createdAt.toLocaleDateString()} </span>
             </div>
-            {/*-- Note Tags --*/}
-            <div className="flex flex-wrap gap-1 text-slate-500 text-sm px-4 pt-4">
-                {noteContent.tags.map((tag) => <div key={tag.name} className="bg-white border text-primary rounded-md px-2">
-                    {tag.name}
-                </div>)}
-            </div>
+            
             {/*-- Note Description --*/}
             <div className="text-slate-600  text-sm p-4">
                 {noteContent.description}

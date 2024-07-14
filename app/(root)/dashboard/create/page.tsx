@@ -19,20 +19,6 @@ const codePlaceholder = `
 export default function CreateNote() {
     const [title, setTitle] = useState("Your Note title");
     const [description, setDescription] = useState("Short description about your code");
-    const [tags, setTags] = useState([
-        {
-            name: "javascript",
-            selected: true,
-        },
-        {
-            name: "java",
-            selected: false,
-        },
-        {
-            name: "python",
-            selected: false,
-        },
-    ]);
     const [code, setCode] = useState(codePlaceholder)
 
     return <div className="flex flex-row w-full gap-2">
@@ -46,7 +32,6 @@ export default function CreateNote() {
                 noteContent={{
                     title,
                     description,
-                    tags,
                     code,
                     createdAt: new Date(),
                 }}
@@ -55,11 +40,9 @@ export default function CreateNote() {
         <NoteEditor
             title={title}
             description={description}
-            tags={tags}
             code={code}
             setTitle={setTitle}
             setDescription={setDescription}
-            setTags={setTags}
             setCode={setCode}
         />
     </div>
