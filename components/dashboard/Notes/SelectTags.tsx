@@ -3,27 +3,19 @@ import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { ChevronsUpDown } from "lucide-react";
 import { FaSearch } from "react-icons/fa";
-import { useState, useEffect } from "react";
+import { FaCheck } from "react-icons/fa";
+import { useState } from "react";
 
 
-export default function SelectTags({ tags }: { tags: string[] }) {
-    const [selectedTags, setSelectedTags] = useState([]);
-    const [displayTags, setDisplayTags] = useState(tags)
+export default function SelectTags({ tags, setTags, }: { tags: { name: string, selected: boolean }[], setTags: (param: { name: string, selected: boolean }[]) => void }) {
+
+    const [displayTags, setDisplayTags] = useState<{ name: string, selected: boolean }[]>(tags)
     const [open, setOpen] = useState(false);
 
     function filterTags(param: string) {
-        const filteredTags = tags.filter(str => str.includes(param));
+        const filteredTags = tags.filter(({ name }) => name.includes(param));
         setDisplayTags(filteredTags)
     }
-
-    function stringInArray(stringToSearch: string): boolean {
-        return selectedTags.includes(stringToSearch);
-    }
-
-    function removeStringFromArray(stringToRemove: string): string[] {
-        return selectedTags.filter(str => str !== stringToRemove);
-    }
-
 
 
     return <div className="relative">
@@ -51,21 +43,26 @@ export default function SelectTags({ tags }: { tags: string[] }) {
                     </div>
 
                     <div className="flex flex-col gap-4">
-                        { }
+                        {displayTags.length === 0 ? <p className="text-sm">No tags found</p> : displayTags.map((tag, idx) => {
+                            const changesSelectedState = () => {
+                                const tempArray = tags;
+                                tempArray[idx].selected = !tag.selected;
+                                console.log(tempArray[idx].selected )
+                                setTags(tempArray)
+                            }
 
-                        {displayTags.length === 0 ? <p className="text-sm">No tags found</p> : displayTags.map((tag: string) => (
-                            <>
-                                <div
-                                    onClick={() => {
-                                        if (stringInArray(tag)) removeStringFromArray(tag)  
-                                        else selectedTags.push(tag)
-                                    }}
-                                    key={tag}
-                                    className="text-sm">
-                                    {tag}
-                                </div >
-                            </>
-                        ))}
+                            return (
+                                <>
+                                    <div
+                                        onClick={changesSelectedState}
+                                        key={tag.name}
+                                        className={`text-sm text-slate-400 ${tag.selected && "text-slate-600 font-semibold cursor-pointer flex flex-row items-center gap-2"}`}>
+                                        {tag.selected && <FaCheck />}
+                                        {tag.name}
+                                    </div >
+                                </>
+                            )
+                        })}
                     </div>
                 </div>
             </ScrollArea>

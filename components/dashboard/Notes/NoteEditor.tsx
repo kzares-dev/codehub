@@ -10,11 +10,11 @@ import SelectTags from "./SelectTags";
 interface NoteEditorType {
   title: string,
   description: string,
-  tags: string[],
+  tags: { name: string, selected: boolean }[],
   code: string,
   setTitle: (title: string) => void,
   setDescription: (description: string) => void,
-  setTags: (tags: string[]) => void,
+  setTags: (param: { name: string, selected: boolean }[]) => void,
   setCode: (code: string) => void,
 }
 
@@ -29,7 +29,20 @@ function NoteEditor({
   setCode,
 }: NoteEditorType) {
 
-  const allTags = ["javascript", "nodejs", "java"]
+  const allTags = [
+    {
+      name: "javascript",
+      selected: false,
+    },
+    {
+      name: "java",
+      selected: false,
+    },
+    {
+      name: "python",
+      selected: false,
+    },
+  ]
 
   return (
     <div className="gap-5 flex flex-col w-full bg-white p-5  border rounded-l-lg h-auto">
@@ -55,12 +68,12 @@ function NoteEditor({
         <GiPapers size={20} className="text-slate-800" />
         <div className="flex justify-between w-full">
           <div className="flex gap-2 items-center flex-wrap">
-            {tags.map((tag, idx) => (
+            {/*tags.map((tag, idx) => (
               <div key={tag + idx} className="bg-slate-100 text-slate-400 p-1 px-2 rounded-md">
                 {tag}
               </div>
-            ))}
-            <SelectTags tags={allTags} />
+            )) */}
+            <SelectTags setTags={setTags} tags={allTags} />
           </div>
 
         </div>
